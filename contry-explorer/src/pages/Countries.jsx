@@ -1,9 +1,11 @@
 // src/pages/Countries.jsx
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Countries() {
-  const [region, setRegion] = useState("");
+  const location = useLocation();
+  const regionFromState = location.state?.region || "";
+  const [region, setRegion] = useState(regionFromState);
   const [countries, setCountries] = useState([]);
 
   // Hämta data varje gång region ändras
@@ -43,6 +45,7 @@ export default function Countries() {
           <Link 
             key={country.cca3} 
             to={`/countries/${country.name.common.toLowerCase()}`}
+            state={{ region }}
             style={{ textDecoration: "none", color: "inherit" }}
           >
             <div style={{
@@ -56,7 +59,7 @@ export default function Countries() {
                 alt={country.name.common} 
                 style={{ width: "100%", height: "100px", objectFit: "cover", borderRadius: "4px" }}
               />
-              <p>{country.name.common}</p>
+              <p className="countryName">{country.name.common}</p>
             </div>
           </Link>
         ))}

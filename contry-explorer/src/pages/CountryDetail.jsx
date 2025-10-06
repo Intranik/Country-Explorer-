@@ -1,10 +1,12 @@
-// src/pages/CountryDetail.jsx
-import { useParams } from "react-router-dom";
+import { useParams, useLocation, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useCollection } from "../context/CollectionContext";
 
 export default function CountryDetail() {
   const { countryName } = useParams();
+  const location = useLocation();
+  const region = location.state?.region; 
+
   const [country, setCountry] = useState(null);
   const { addCountry } = useCollection();
 
@@ -21,7 +23,7 @@ export default function CountryDetail() {
   const currencyNames = currencies ? Object.values(currencies).map(c => c.name).join(", ") : "N/A";
 
   return (
-    <div>
+    <div style={{ textAlign: "center" }}>
       <h1>{name.common}</h1>
       <img src={flags.png} alt={name.common} style={{ width: "200px" }} />
       <p><b>Population:</b> {population.toLocaleString()}</p>
@@ -31,9 +33,18 @@ export default function CountryDetail() {
           View on Google Maps
         </a>
       </p>
+
       <button onClick={() => addCountry({ name, flags, population, currencies, cca3 })}>
         Spara land
       </button>
+
+      {region && (
+        <div style={{ marginTop: "1rem" }}>
+          <Link to="/countries" state={{ region }}>
+            <button>Tillbaka till {region}</button>
+          </Link>
+        </div>
+      )}
     </div>
   );
 }

@@ -65,6 +65,16 @@ export default function Quiz() {
     saved.push(result);
     localStorage.setItem("quizResults", JSON.stringify(saved));
   }
+  function resetQuiz() {
+    setStep(1);
+    setUsername("");
+    setRegion("");
+    setCountries([]);
+    setCurrentIndex(0);
+    setAnswer("");
+    setScore(0);
+    setFeedback(null);
+  }
 
   if (step === 1) {
     return (
@@ -119,6 +129,7 @@ export default function Quiz() {
       <div>
         <h1>Resultat</h1>
         <p>{username}, du fick {score} av {countries.length} rätt!</p>
+        <button onClick={resetQuiz}>Spela igen</button>
       </div>
     );
   }
