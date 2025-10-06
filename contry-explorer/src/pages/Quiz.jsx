@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "../index.css";
+import '../index.css';
 export default function Quiz() {
   const [step, setStep] = useState(1); // 1 = form, 2 = quiz, 3 = result
   const [username, setUsername] = useState("");
@@ -17,7 +17,7 @@ export default function Quiz() {
         .then(res => res.json())
         .then(data => {
           // slumpa 15 länder
-          const shuffled = data.sort(() => 0.5 - Math.random()).slice(0, 15);
+          const shuffled = data.sort(() => 0.5 - Math.random()).slice(0, 1);
           setCountries(shuffled);
         });
     }

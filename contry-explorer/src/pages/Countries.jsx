@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 
+
 export default function Countries() {
   const location = useLocation();
   const regionFromState = location.state?.region || "";

@@ -6,7 +6,7 @@ import CountryDetail from "./pages/CountryDetail.jsx";
 import Collection from "./pages/Collection.jsx";
 import Quiz from "./pages/Quiz.jsx";
 import Leaderboard from "./pages/Leaderboord.jsx";
-import './App.css';
+
 
 export default function App() {
   return (

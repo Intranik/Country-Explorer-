@@ -2,6 +2,7 @@ import { useParams, useLocation, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useCollection } from "../context/CollectionContext";
 
+
 export default function CountryDetail() {
   const { countryName } = useParams();
   const location = useLocation();
