@@ -17,7 +17,7 @@ export default function Quiz() {
         .then(res => res.json())
         .then(data => {
           // slumpa 15 länder
-          const shuffled = data.sort(() => 0.5 - Math.random()).slice(0, 1);
+          const shuffled = data.sort(() => 0.5 - Math.random()).slice(0, 15);
           setCountries(shuffled);
         });
     }
